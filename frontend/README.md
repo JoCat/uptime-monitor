@@ -5,7 +5,7 @@
 
 ## Description
 
-Uptime Monitor - self hosted status page written on Node.js/Nest
+[Frontend] Uptime Monitor - self hosted status page written on Node.js/Nest
 
 ## Installation
 
@@ -17,11 +17,11 @@ $ npm install
 
 ```bash
 # development
-$ npm run start
+$ npm run dev
 
-# watch mode
-$ npm run start:dev
+# build
+$ npm run build
 
-# production mode
-$ npm run start:prod
+# preview
+$ npm run preview
 ```

@@ -1,6 +1,5 @@
 {
   "name": "uptime-monitor-backend",
-  "version": "0.0.1",
   "description": "Uptime Monitor - self hosted status page written on Node.js/Nest",
   "author": "JCat",
   "private": true,
