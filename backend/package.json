@@ -1,5 +1,5 @@
 {
-  "name": "uptime-monitor",
+  "name": "uptime-monitor-backend",
   "version": "0.0.1",
   "description": "Uptime Monitor - self hosted status page written on Node.js/Nest",
   "author": "JCat",
@@ -21,7 +21,6 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@fastify/view": "^7.0.0",
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/mapped-types": "*",
