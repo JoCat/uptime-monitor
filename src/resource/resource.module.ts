@@ -11,5 +11,6 @@ import { Resource, ResourceSchema } from './schemas/resource.schema';
     ]),
   ],
   providers: [ResourceService],
+  exports: [ResourceService],
 })
 export class ResourceModule {}
