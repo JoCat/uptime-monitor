@@ -25,8 +25,6 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/mongoose": "^9.1.1",
     "@nestjs/platform-fastify": "^8.4.5",
-    "@nestjs/serve-static": "^2.2.2",
-    "fastify-static": "^4.7.0",
     "mongoose": "^6.4.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
