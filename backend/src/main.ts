@@ -1,3 +1,5 @@
+import { join } from 'path';
+
 import { NestFactory } from '@nestjs/core';
 import {
   FastifyAdapter,
@@ -12,6 +14,7 @@ async function bootstrap() {
     new FastifyAdapter(),
     { cors: true },
   );
-  await app.listen(3000);
+  app.useStaticAssets({ root: join(__dirname, '../uploads') });
+  await app.listen(4000);
 }
 bootstrap();

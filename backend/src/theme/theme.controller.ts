@@ -9,8 +9,8 @@ export class ThemeController {
   @Get()
   getThemeSettings() {
     return {
-      logoUrl: '/logo.png',
-      backgroundColor: '#222',
+      logoUrl: '/src/logo.png',
+      backgroundColor: '#170934',
       title: 'Uptime Monitor',
       logoAlt: 'Uptime Monitor',
     };
