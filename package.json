@@ -1,0 +1,9 @@
+{
+  "name": "uptime-monitor",
+  "description": "Uptime Monitor - self hosted status page written on Node.js/Nest",
+  "version": "0.0.1",
+  "author": "JCat",
+  "private": true,
+  "license": "MIT",
+  "scripts": {}
+}

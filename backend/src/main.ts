@@ -1,5 +1,9 @@
+import { randomUUID } from 'crypto';
 import { join } from 'path';
 
+import fastifyCookie from '@fastify/cookie';
+import { ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import {
   FastifyAdapter,
@@ -14,7 +18,15 @@ async function bootstrap() {
     new FastifyAdapter(),
     { cors: true },
   );
+  const configService = app.get(ConfigService);
+
+  await app.register(fastifyCookie, {
+    secret: configService.get('COOKIE_SECRET', randomUUID()),
+  });
+
   app.useStaticAssets({ root: join(__dirname, '../uploads') });
-  await app.listen(4000);
+  app.useGlobalPipes(new ValidationPipe());
+
+  await app.listen(configService.get('PORT', 4000));
 }
 bootstrap();
