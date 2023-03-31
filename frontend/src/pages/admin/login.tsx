@@ -7,11 +7,12 @@ import {
   Typography,
 } from '@mui/material';
 
+import { authLogin } from '../../api';
 import { useUser } from '../../hooks/useUser';
 import logo from '../../logo.png';
 
 export function Login() {
-  const { login } = useUser();
+  const { checkAuth } = useUser();
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -19,13 +20,8 @@ export function Login() {
     const data = new FormData(form);
     const username = data.get('username') as string;
     const password = data.get('password') as string;
-    const response = await login(username, password);
-    try {
-      await login(username, password);
-    } catch (error) {
-      console.error(error);
-      // Swal.fire(error, '', 'error');
-    }
+    await authLogin(username, password);
+    checkAuth();
   };
 
   return (

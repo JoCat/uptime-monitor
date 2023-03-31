@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { RecoilRoot } from 'recoil';
 
 import { useUser } from '../hooks/useUser';
 import { Login } from '../pages/admin/login';

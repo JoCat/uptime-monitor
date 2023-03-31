@@ -1,15 +1,13 @@
 import { api } from './api';
 
-interface LoginResponse {
-  accessToken: string;
-}
-
 export function authLogin(username: string, password: string) {
-  return api
-    .post('auth/login', { json: { username, password } })
-    .json<LoginResponse>();
+  return api.post('auth/login', { json: { username, password } });
 }
 
-export function authLogout(refreshToken: string) {
-  return api.post('auth/logout', { json: { refreshToken } }).json();
+export function authLogout() {
+  return api.post('auth/logout');
+}
+
+export function authCheck() {
+  return api.get('auth/check', { credentials: 'include' });
 }

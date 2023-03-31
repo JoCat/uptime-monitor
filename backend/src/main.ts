@@ -16,13 +16,14 @@ async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter(),
-    { cors: true },
   );
   const configService = app.get(ConfigService);
 
   await app.register(fastifyCookie, {
     secret: configService.get('COOKIE_SECRET', randomUUID()),
   });
+
+  app.enableCors({ origin: configService.get('FRONTEND_DOMAIN', '*') });
 
   app.useStaticAssets({ root: join(__dirname, '../uploads') });
   app.useGlobalPipes(new ValidationPipe());

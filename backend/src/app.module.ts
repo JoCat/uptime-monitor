@@ -8,7 +8,7 @@ import { ThemeModule } from './theme/theme.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot('mongodb://localhost/nest'),
+    MongooseModule.forRoot('mongodb://localhost/uptime-monitor'),
     ThemeModule,
     AuthModule,
   ],

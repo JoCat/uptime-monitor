@@ -8,7 +8,7 @@ import { LoginDto } from './dto/login.dto';
 
 @Injectable()
 export class AuthService {
-  private authData: { authToken: string; authExpires: Date };
+  private authData?: { authToken: string; authExpires: Date };
 
   constructor(private configService: ConfigService) {}
 
@@ -28,6 +28,11 @@ export class AuthService {
     ) {
       throw new BadRequestException('Invalid credentials');
     }
+  }
+
+  public logout(response: FastifyReply) {
+    this.authData = undefined;
+    response.clearCookie('authToken');
   }
 
   public isAuthenticated(authCookie: string) {
@@ -50,7 +55,7 @@ export class AuthService {
       signed: true,
       httpOnly: true,
       secure: this.configService.get('COOKIE_SECURE', 'false') === 'true',
-      domain: this.configService.get('COOKIE_DOMAIN', 'localhost'),
+      domain: this.configService.get('COOKIE_DOMAIN'),
       path: '/',
       expires: authExpires,
     });

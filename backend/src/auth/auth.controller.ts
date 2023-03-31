@@ -1,6 +1,7 @@
-import { Body, Controller, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Res, UseGuards } from '@nestjs/common';
 import { FastifyReply } from 'fastify';
 
+import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 
@@ -15,5 +16,19 @@ export class AuthController {
   ) {
     this.authService.login(loginDto);
     this.authService.setAuthCookie(response);
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('check')
+  check() {
+    return {
+      message: 'You are logged in',
+    };
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('logout')
+  logout(@Res() response: FastifyReply) {
+    this.authService.logout(response);
   }
 }
